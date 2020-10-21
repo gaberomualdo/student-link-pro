@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "BU Student Link Pro",
+  "description": "Major updates to Student Link to match modern 2020 UI instead of 2003 UI.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Major updates to Student Link to match modern 2020 UI instead of 2003 UI."
+  },
+  "permissions": ["activeTab", "tabs", "<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*"
+      ],
+      "js": ["addons.js"],
+      "css": ["addons.css"]
+    }
+  ]
+}
