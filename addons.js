@@ -182,13 +182,17 @@ const gabrielEntersTheChat = () => {
     const listBlock = document.querySelector('body > table');
     listBlock.classList.add('list-block');
     listBlock.classList.add('with-links');
-    listBlock.innerHTML = `<ul>${listBlock.innerHTML.replace(/&nbsp; &nbsp;/g, '<div class="margin"></div>')}</ul>`;
+    listBlock.innerHTML = `${listBlock.innerHTML.replace(/&nbsp; &nbsp;/g, '<div class="margin"></div>')}`;
     Array.from(document.querySelectorAll('body > table a')).forEach((elm) => {
-      if (elm.querySelector('i') && elm.querySelector('i').innerText.trim() === elm.innerText.trim()) {
+      if (!elm.href.includes(BASE_SUBSTR)) {
         elm.classList.add('external-link');
       }
       elm.outerHTML = `<li>${elm.outerHTML}</li>`;
     });
+
+    const listBlockTitleElm = document.querySelector('body > table > tbody > tr:first-child > td');
+    const listBlockTitle = asTitle(listBlockTitleElm.querySelector('img').getAttribute('alt'));
+    listBlockTitleElm.innerHTML = `<h1 class='list-block-title'>${listBlockTitle}</h1>`;
   }
 };
 gabrielEntersTheChat();
