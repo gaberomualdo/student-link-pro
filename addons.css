@@ -278,10 +278,17 @@ form:not(:last-child) {
 
 body {
   --width: 1200px;
-  margin: 0 auto;
   box-sizing: border-box;
-  width: calc(100% - 1.5rem);
-  max-width: var(--width);
+  width: 100%;
+  padding: 0 calc((100% - var(--width)) / 2);
+  padding-bottom: 3rem;
+}
+@media only screen and (max-width: 1250px) {
+  body,
+  .footer {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }
 
 html,
@@ -311,15 +318,20 @@ hr {
 .footer {
   width: 100%;
   display: flex;
-  padding: 1.25rem 0.75rem;
+  padding: 1.25rem calc((100% - var(--width)) / 2);
   box-sizing: border-box;
   border-top: 1px solid var(--light-color);
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 .footer p {
   flex-basis: 100%;
   flex-shrink: 1;
   text-align: center;
   font-size: 0.9rem;
+  margin: 0;
 }
 .footer p:first-child {
   text-align: left;
@@ -465,6 +477,7 @@ body.has-nav {
 .nav .meta a.badge:hover {
   opacity: 1;
   background-color: var(--theme-dark);
+  text-decoration: none !important;
 }
 /* .nav .meta .badge:not(:last-child) {
   margin-bottom: 0.5rem;
@@ -480,7 +493,9 @@ body.has-nav {
   overflow: hidden;
   box-sizing: border-box;
   padding: 2rem;
-  padding-top: 2rem;
+  padding-top: 2.5rem;
+  position: relative;
+  background-color: #fff;
 }
 .list-block * {
   background-color: transparent !important;
@@ -565,4 +580,32 @@ body.has-nav {
   padding: 0;
   margin: 0;
   border: none;
+}
+
+.list-block .list-block-icon {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1rem;
+  width: 1rem;
+  opacity: 0.65;
+}
+.list-block .list-block-icon svg {
+  height: 100%;
+  width: 100%;
+}
+.list-block .list-block-icon svg,
+.list-block .list-block-icon svg path {
+  fill: var(--tab-color);
+}
+
+body.is-list-page {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.93), rgba(255, 255, 255, 0.93)), url(http://localhost:5727/bg10.jpg);
+  background-size: 25rem auto;
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
+  position: relative;
 }
