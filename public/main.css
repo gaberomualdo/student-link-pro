@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+  --text: #333;
+  --theme: #c00;
+  --theme-dark: #a00;
+}
+.with-links a {
+  color: var(--theme) !important;
+  text-decoration: none !important;
+  --border-bottom-style: dotted;
+  --border-bottom-color: var(--theme);
+  border-bottom: 1px var(--border-bottom-style) var(--border-bottom-color);
+  cursor: pointer;
+}
+.with-links a > * {
+  color: inherit !important;
+  text-decoration: inherit;
+}
+.with-links a:hover {
+  text-decoration: none !important;
+  --border-bottom-style: solid;
+  --border-bottom-color: var(--theme-dark);
+  color: var(--theme-dark) !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Sans';
+  box-sizing: border-box;
+  color: var(--text);
+}
+.padded {
+  --padded-width: 1200px;
+  padding-left: calc((100% - var(--padded-width)) / 2);
+  padding-right: calc((100% - var(--padded-width)) / 2);
+}
+@media only screen and (max-width: 1250px) {
+  .padded {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.btn {
+  display: inline-block;
+  width: 12.5rem;
+  padding: 0.75rem 0.75rem;
+  text-align: center;
+  border: 1px solid #333;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
+  text-decoration: none;
+  font-size: 1.15rem;
+  border-radius: 3px;
+}
+.btn i {
+  margin-right: 0.5rem;
+  vertical-align: baseline;
+}
+.btn:hover {
+  color: #fff;
+  background-color: #333;
+  border-color: #333;
+}
+.btn.primary {
+  background-color: var(--theme);
+  border-color: var(--theme);
+  color: #fff;
+}
+.btn.primary:hover {
+  border-color: var(--theme-dark);
+  background-color: var(--theme-dark);
+}
+i {
+  color: inherit;
+}
+
+footer {
+  --theme: #fff;
+  --theme-dark: #fff;
+  background-color: #242629;
+  display: flex;
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+footer > * {
+  color: #fff;
+  flex: 1 1 100%;
+}
+footer > *:nth-child(2) {
+  text-align: center;
+}
+footer > *:last-child {
+  text-align: right;
+}
+
+nav {
+  display: block;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.2rem 0.75rem;
+  min-height: var(--nav-height);
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  background-color: #ffffff;
+  z-index: 999999999;
+}
+nav .logo {
+  float: left;
+  height: 100%;
+  font-size: 0;
+}
+nav .logo > * {
+  height: 1.75rem;
+  line-height: 1.85rem;
+  width: auto;
+  margin-right: 0.85rem;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 1.2rem;
+  color: var(--theme);
+  font-weight: 500;
+}
+nav .logo > img {
+  transform: scale(1.1);
+}
+
+nav .links {
+  float: right;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: 1;
+  align-items: center;
+  justify-content: center;
+}
+nav .links a {
+  line-height: 2rem;
+  height: 1.75rem;
+  font-size: 1rem;
+  --border-color: transparent;
+  text-decoration: none;
+  transition: opacity 0.2s, color 0.2s;
+  cursor: pointer;
+  display: inline-block;
+  color: var(--text);
+  position: relative;
+}
+nav .links a {
+  opacity: 0.85;
+  --border-color: var(--theme);
+}
+nav .links a:hover {
+  color: var(--theme);
+  opacity: 1;
+}
+nav .links a::before {
+  content: '';
+  transition: width 0.2s;
+  width: 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 1px solid var(--border-color);
+}
+nav .links a:hover::before {
+  width: 100%;
+}
+
+nav .links a:not(:last-child) {
+  margin-right: 1.25rem;
+}
+
+section#top {
+  height: 25rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+section#top > .left {
+  flex: 1 1 60%;
+}
+section#top > .left .btns {
+  margin-top: 1.25rem;
+}
+section#top > .left .btn {
+  margin-right: 0.25rem;
+}
+section#top > .right {
+  flex: 1 1 40%;
+  margin-left: 2rem;
+}
+
+section#top > .right img {
+  width: 10px;
+  height: auto;
+}
+section#top > .left h1 {
+  font-size: 2.5rem;
+}
+section#top > .left h1 strong {
+  color: var(--theme);
+}
