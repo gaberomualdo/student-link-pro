@@ -10,7 +10,10 @@ window.addEventListener('load', () => {
     if (dragging) {
       const rect = imageElm.getBoundingClientRect();
       const width = rect.right - rect.left;
-      imageElm.setAttribute('style', `--left-offset: ${((e.clientX - rect.left) / width) * 100}%`);
+      let perc = ((e.clientX - rect.left) / width) * 100;
+      perc = Math.max(10, perc);
+      perc = Math.min(90, perc);
+      imageElm.setAttribute('style', `--left-offset: ${perc}%`);
     }
   });
   document.addEventListener('mouseup', () => {

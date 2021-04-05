@@ -301,6 +301,33 @@ section#features {
   background-color: var(--light);
   clip-path: polygon(0 3.5rem, 100% 0, 100% calc(100% - 3.5rem), 0 100%);
 }
+section#features > .list {
+  display: flex;
+  margin: 1.75rem 0;
+}
+section#features > .list > * {
+  flex: 1 1 100%;
+}
+section#features > .list > *:not(:last-child) {
+  margin-right: 5rem;
+}
+section#features > .list > * > img {
+  width: auto;
+  max-height: 10rem;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-bottom: 1.9rem;
+  display: block;
+}
+section#features > .list > * > h1 {
+  font-size: 1.85rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+section#features > .list > * > p {
+  line-height: 1.5;
+  opacity: 0.8;
+}
 
 section#code {
   display: flex;
@@ -336,6 +363,7 @@ hr {
 section#about p {
   font-size: 1.05rem;
   line-height: 1.5;
+  opacity: 0.8;
 }
 section#about p:not(:last-child) {
   margin-bottom: 1.25rem;
