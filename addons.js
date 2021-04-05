@@ -7,6 +7,45 @@ function titleCase(string) {
   return sentence.join(' ');
 }
 /* copied snippets (end) */
+const evaluateCamelCase = (x) => {
+  let r = '';
+  for (let i = 0; i < x.length; i++) {
+    r += x[i] === x[i].toLowerCase() ? '' : ' ';
+    r += x[i];
+  }
+  return r.trim();
+};
+const asTitle = (x) => {
+  return titleCase(evaluateCamelCase(x));
+};
+
+const querySelectorAllText = (selector, text, elm = document) => {
+  const selectorMatches = Array.from(elm.querySelectorAll(selector));
+  const r = [];
+  for (let i = 0; i < selectorMatches.length; i++) {
+    if (selectorMatches[i].innerText.toLowerCase().includes(text.toLowerCase())) {
+      r.push(selectorMatches[i]);
+    }
+  }
+  return r;
+};
+
+const querySelectorText = (selector, text, elm = document) => {
+  const all = elm.querySelectorAllText(selector, text);
+  return all.length > 0 ? all[0] : null;
+};
+
+const setSelectorTextWithClass = (selector, text, className, elm = document) => {
+  querySelectorAllText(selector, text, elm).forEach((elm) => {
+    elm.classList.add(className);
+  });
+};
+
+const EXTENSION_NAME = 'Student Link Pro';
+const EXTENSION_CREATOR = 'Gabriel Romualdo';
+const EXTENSION_URL = '#';
+const PAGE_NAME = 'Student Link';
+const PAGE_TITLE_SEPARATOR = ' – ';
 
 const BASE_SUBSTR = 'bu.edu/link/bin/uiscgi_studentlink.pl';
 const BASE_URL = `http://${BASE_SUBSTR}`;
@@ -24,41 +63,25 @@ const pageIcons = {
   Index: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 6h-8v-6h8v6zm-10 12h-6v6h6v-6zm18 0h-6v6h6v-6zm-11-7v-3h-2v3h-9v5h2v-3h7v3h2v-3h7v3h2v-5h-9zm2 7h-6v6h6v-6z"/></svg>`,
 };
 
-const evaluateCamelCase = (x) => {
-  let r = '';
-  for (let i = 0; i < x.length; i++) {
-    r += x[i] === x[i].toLowerCase() ? '' : ' ';
-    r += x[i];
-  }
-  return r.trim();
+const pageImages = {
+  Academics: 'https://images.pexels.com/photos/3494806/pexels-photo-3494806.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'Degree Advice': 'https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  Money: 'https://images.pexels.com/photos/4386442/pexels-photo-4386442.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  Personal: 'https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  Work: 'https://images.pexels.com/photos/684314/pexels-photo-684314.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  Food: 'https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  Basics: 'https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  Index: 'https://images.pexels.com/photos/357514/pexels-photo-357514.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
 };
-const asTitle = (x) => {
-  return titleCase(evaluateCamelCase(x));
-};
-
-const querySelectorAllText = (selector, text, elm = document) => {
-  const selectorMatches = Array.from(elm.querySelectorAll(selector));
-
-  const r = [];
-
-  for (let i = 0; i < selectorMatches.length; i++) {
-    if (selectorMatches[i].innerText.toLowerCase().includes(text.toLowerCase())) {
-      r.push(selectorMatches[i]);
-    }
-  }
-
-  return r;
-};
-
-const querySelectorText = (selector, text, elm = document) => {
-  const all = elm.querySelectorAllText(selector, text);
-  return all.length > 0 ? all[0] : null;
-};
-
-const setSelectorTextWithClass = (selector, text, className, elm = document) => {
-  querySelectorAllText(selector, text, elm).forEach((elm) => {
-    elm.classList.add(className);
-  });
+const pageLinks = {
+  Academics: 'https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617381142?ModuleName=menu.pl&amp;NewMenu=Academics',
+  'Degree Advice': 'https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=DegreeAdvice',
+  Money: 'https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Money',
+  Personal: 'https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Personal',
+  Work: 'https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Work',
+  Food: 'https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Food',
+  Basics: 'https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Basics',
+  Index: 'https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Index',
 };
 
 const gabrielEntersTheChat = () => {
@@ -74,11 +97,7 @@ const gabrielEntersTheChat = () => {
 
   document.head.insertAdjacentHTML(
     'afterbegin',
-    `
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-`
+    `<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge">`
   );
 
   // footer
@@ -91,6 +110,9 @@ const gabrielEntersTheChat = () => {
     footer.classList.add('with-links');
     footer.innerHTML = footer.querySelector('font').innerHTML;
     footer.innerHTML = '<p>' + footer.innerHTML.split('<br>').join('</p><p>') + '</p>';
+    footer.querySelector('p:nth-child(2)').innerHTML = `
+    <a href="http://bu.edu/link/bin/uiscgi_studentlink.pl" style="border: none;"><img src="https://www.bu.edu/home/img/masterplate112x50-retina.png" alt="BU Logo" /><img src="https://www.bu.edu/link/student/images/logo.gif" alt="Student Link Logo" /></a>
+    `;
   })();
 
   // links
@@ -102,13 +124,13 @@ const gabrielEntersTheChat = () => {
 
   let currentTabObj = undefined;
 
+  let isHomepage = false;
+
   // navigation bar
   (() => {
     const nav = document.querySelector('body > table:first-child');
-    console.log(nav);
+    document.body.classList.add('has-nav');
     if (nav) {
-      document.body.classList.add('has-nav');
-
       // get nav links
       const navLinks = nav.querySelectorAll('tr:nth-child(2) > td td');
 
@@ -122,7 +144,7 @@ const gabrielEntersTheChat = () => {
         '#0abde3', // cyan
         '#ff9f43', // yellow
         '#c0392b', // red
-        '#2188ff', // blue
+        '#2188ff', // blue --> "Gabriel blue"
       ];
 
       navLinks.forEach((linkElm) => {
@@ -130,7 +152,7 @@ const gabrielEntersTheChat = () => {
         if (imageAlt.includes('tab empty')) {
           // current tab
           const currentTabName = document.querySelector('body > table:nth-child(2) > tbody > tr:first-child > td > img').getAttribute('alt');
-          document.body.setAttribute('style', '--tab-color: ' + linkColors[links.length % linkColors.length]);
+          document.body.setAttribute('style', `--tab-color: ${/* linkColors[links.length % linkColors.length] */ 'var(--theme)'}`);
 
           currentTabObj = {
             name: asTitle(currentTabName),
@@ -152,21 +174,20 @@ const gabrielEntersTheChat = () => {
 
       // create logo
       const logoHTML = `
-      <div class='logo'>
-        <a href='${BASE_URL}' class='image'>
-          <img src=${LOGO_TOP_URL} class='top' />
-          <img src=${LOGO_BOTTOM_URL} class='bottom' />
-        </a>
-      </div>`;
+<div class='logo'>
+  <a href='${BASE_URL}' class='image'>
+    <img src=${LOGO_TOP_URL} class='top' />
+    <img src=${LOGO_BOTTOM_URL} class='bottom' />
+  </a>
+</div>`;
 
       // create meta area
       let metaInnerHTML = '';
 
       (() => {
         const logoutBtn = document.querySelector('body > table:first-child > tbody > tr:first-child > td:nth-child(2) > a');
-        console.log(logoutBtn);
         if (logoutBtn) {
-          metaInnerHTML += `<a class='badge' href='${logoutBtn.href}'>Log Out</a>`;
+          metaInnerHTML += `<a class='badge' href='${logoutBtn.href}'>&larr; Log Out</a>`;
         }
       })();
 
@@ -175,11 +196,30 @@ const gabrielEntersTheChat = () => {
       <div class='nav'>
         <div class='nav-inner'>
           ${logoHTML}
-          <div class='meta'>${metaInnerHTML}</div>
+          <div class='meta ${metaInnerHTML === '' ? 'disabled' : ''}'>${metaInnerHTML}</div>
           <div class='links'>
             ${links
               .map((link, i) => `<a ${link.url.length > 0 ? `href=${link.url}` : ''} active='${link.currentTab ? 'true' : 'false'}'>${link.name}</a>`)
               .join('')}
+          </div>
+        </div>
+      </div>
+      `;
+    } else {
+      // homepage
+      isHomepage = true;
+      document.querySelector('body > center:first-child > table:first-child').outerHTML = `
+      <div class="nav">
+        <div class="nav-inner">    
+          <div class="logo">
+            <a href="http://bu.edu/link/bin/uiscgi_studentlink.pl" class="image">
+              <img src="https://www.bu.edu/link/student/images/bu_home.gif" class="top">
+              <img src="https://www.bu.edu/link/student/images/logo.gif" class="bottom">
+            </a>
+          </div>
+          <div class="meta disabled"></div>
+          <div class="links">
+            <a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617381142?ModuleName=menu.pl&NewMenu=Academics" active="false">Academics</a><a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=DegreeAdvice" active="false">Degree Advice</a><a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Money" active="false">Money</a><a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Personal" active="false">Personal</a><a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Work" active="false">Work</a><a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Food" active="false">Food</a><a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Basics" active="false">Basics</a><a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl/1617380721?ModuleName=menu.pl&amp;NewMenu=Index" active="false">Index</a>
           </div>
         </div>
       </div>
@@ -202,7 +242,6 @@ const gabrielEntersTheChat = () => {
     });
 
     // add icon
-
     const listBlockTitleElm = document.querySelector('body > table > tbody > tr:first-child > td');
     const listBlockTitle = asTitle(listBlockTitleElm.querySelector('img').getAttribute('alt'));
     listBlockTitleElm.innerHTML = `<h1 class='list-block-title'>${listBlockTitle}</h1>`;
@@ -213,6 +252,46 @@ const gabrielEntersTheChat = () => {
       icon.innerHTML = pageIcons[listBlockTitle];
       listBlock.appendChild(icon);
     }
+  }
+
+  if (isHomepage) {
+    // remove everything except for navigation bar and footer
+    document.querySelectorAll('body > center:first-child > *').forEach((e) => {
+      if (!e.classList.contains('nav')) {
+        e.outerHTML = '';
+      }
+    });
+    document.querySelectorAll('body > *:not(:first-child):not(.footer)').forEach((e) => {
+      e.outerHTML = '';
+    });
+
+    document.querySelector('body > center:first-child').innerHTML += `<div class="homepage-main-links"></div>`;
+
+    Object.keys(pageLinks).forEach((key) => {
+      const val = pageLinks[key];
+      document.querySelector('body > center:first-child > .homepage-main-links').innerHTML += `
+      <a href="${val}" class="main-link"><img src="${pageImages[key]}" alt="${key}" /><span>${key}</span></a>
+      `;
+    });
+  }
+
+  // add footer message
+  document.querySelector(
+    '.footer > p:first-child'
+  ).innerHTML += `<br />New UI added by <a target="_blank" href="${EXTENSION_URL}">${EXTENSION_NAME}</a>.`;
+
+  // update page title and favicon
+  const defaultTitle = 'Student Link Menu';
+  if (document.title === defaultTitle) {
+    // check if page is active
+    if (currentTabObj && currentTabObj.name) {
+      document.title = `${currentTabObj.name}${PAGE_TITLE_SEPARATOR}${PAGE_NAME}`;
+    } else {
+      document.title = PAGE_NAME;
+    }
+  } else {
+    const curPageName = document.title.trim();
+    document.title = `${curPageName}${PAGE_TITLE_SEPARATOR}${PAGE_NAME}`;
   }
 };
 gabrielEntersTheChat();
