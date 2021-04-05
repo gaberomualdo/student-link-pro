@@ -43,7 +43,7 @@ const setSelectorTextWithClass = (selector, text, className, elm = document) => 
 
 const EXTENSION_NAME = 'Student Link Pro';
 const EXTENSION_CREATOR = 'Gabriel Romualdo';
-const EXTENSION_URL = '#';
+const EXTENSION_URL = 'https://studentlinkpro.web.app/';
 const PAGE_NAME = 'Student Link';
 const PAGE_TITLE_SEPARATOR = ' – ';
 
