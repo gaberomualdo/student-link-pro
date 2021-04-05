@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html,
+body {
+  scroll-behavior: smooth;
+}
 :root {
-  --text: #333;
+  --text: #444;
+  --light: #f4f4f4;
   --theme: #c00;
   --theme-dark: #a00;
 }
@@ -47,7 +52,7 @@
   width: 12.5rem;
   padding: 0.75rem 0.75rem;
   text-align: center;
-  border: 1px solid #333;
+  border: 1px solid var(--text);
   transition: border-color 0.25s, background-color 0.25s, color 0.25s;
   text-decoration: none;
   font-size: 1.15rem;
@@ -59,8 +64,8 @@
 }
 .btn:hover {
   color: #fff;
-  background-color: #333;
-  border-color: #333;
+  background-color: var(--text);
+  border-color: var(--text);
 }
 .btn.primary {
   background-color: var(--theme);
@@ -81,7 +86,6 @@ footer {
   background-color: #242629;
   display: flex;
   padding: 2rem 0;
-  margin-top: 2rem;
 }
 footer > * {
   color: #fff;
@@ -174,10 +178,24 @@ nav .links a:not(:last-child) {
   margin-right: 1.25rem;
 }
 
+section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+section.less-vertical-padding {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+section > h1 {
+  text-align: center;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  padding: 1rem 0;
+}
+
 section#top {
   height: 25rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
   display: flex;
   align-items: center;
 }
@@ -190,18 +208,135 @@ section#top > .left .btns {
 section#top > .left .btn {
   margin-right: 0.25rem;
 }
-section#top > .right {
-  flex: 1 1 40%;
-  margin-left: 2rem;
-}
-
-section#top > .right img {
-  width: 10px;
-  height: auto;
-}
 section#top > .left h1 {
   font-size: 2.5rem;
 }
 section#top > .left h1 strong {
   color: var(--theme);
+}
+
+section#top > .right {
+  flex: 1 1 40%;
+  margin-left: 1rem;
+}
+section#top > .right .image {
+  width: 100%;
+  height: 20rem;
+  background-color: #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  --left-offset: 48%;
+}
+section#top > .right .image > p {
+  position: absolute;
+  font-size: 0.85rem;
+  line-height: 1;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.65rem 0.65rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+section#top > .right .image > p.before {
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 4px;
+}
+section#top > .right .image > p.after {
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 4px;
+}
+section#top > .right img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+section#top > .right img:nth-child(2) {
+  clip-path: polygon(0 0, calc(var(--left-offset) + 5%) 0, calc(var(--left-offset) - 5%) 100%, 0 100%);
+}
+section#top > .right .image .slider {
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  left: calc(var(--left-offset) - 5%);
+  width: 10%;
+  cursor: col-resize;
+}
+section#top > .right .image .slider:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--theme);
+  clip-path: polygon(80% 0, 100% 0, 20% 100%, 0 100%);
+}
+section#top > .right .image .slider .inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--theme);
+  width: 2.75rem;
+  height: 2.75rem;
+  line-height: 2.75rem;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #fff;
+  /* box-shadow: 0 0 0 2px #ddd; */
+}
+section#top > .right .image .slider .inner i:first-child {
+  margin-right: 0.15rem;
+}
+
+section#features {
+  background-color: var(--light);
+  clip-path: polygon(0 3.5rem, 100% 0, 100% calc(100% - 3.5rem), 0 100%);
+}
+
+section#code {
+  display: flex;
+  align-items: center;
+  background-color: var(--light);
+  --padded-width: 800px;
+  margin-top: 2rem;
+}
+section#code > * {
+  flex: 1 1 100%;
+}
+section#code > *:first-child {
+  font-size: 1.1rem;
+}
+section#code > *:last-child > * {
+  margin: 0 auto;
+  display: block;
+  width: 15rem;
+}
+@media only screen and (max-width: 900px) {
+  section#code > *:last-child > * {
+    float: right;
+  }
+}
+
+hr {
+  width: 800px;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+section#about p {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+section#about p:not(:last-child) {
+  margin-bottom: 1.25rem;
 }
