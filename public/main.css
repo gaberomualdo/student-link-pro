@@ -43,8 +43,8 @@ body {
 }
 @media only screen and (max-width: 1250px) {
   .padded {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -98,6 +98,17 @@ footer > *:nth-child(2) {
 footer > *:last-child {
   text-align: right;
 }
+@media only screen and (max-width: 750px) {
+  footer {
+    flex-direction: column;
+  }
+  footer > *:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+  footer > * {
+    text-align: left !important;
+  }
+}
 
 nav {
   display: block;
@@ -140,6 +151,11 @@ nav .links {
   flex-wrap: 1;
   align-items: center;
   justify-content: center;
+}
+@media only screen and (max-width: 675px) {
+  nav .links {
+    display: none;
+  }
 }
 nav .links a {
   line-height: 2rem;
@@ -219,6 +235,33 @@ section#top > .left h1 strong {
 section#top > .right {
   flex: 1 1 40%;
   margin-left: 1rem;
+}
+@media only screen and (max-width: 875px) {
+  section#top {
+    flex-direction: column;
+    height: auto;
+  }
+  section#top > .left {
+    flex: 1 1 auto;
+  }
+  section#top > .right {
+    flex: 1 1 15rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    height: 15rem;
+    width: 100%;
+    margin-left: 0;
+  }
+  section#top > .left h1 {
+    font-size: 1.75rem;
+  }
+  section#top > .left .btn {
+    zoom: 90%;
+    display: block;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
 }
 section#top > .right .image {
   width: 100%;
@@ -312,6 +355,19 @@ section#features > .list > * {
 section#features > .list > *:not(:last-child) {
   margin-right: 5rem;
 }
+@media only screen and (max-width: 750px) {
+  section#features > .list {
+    flex-direction: column;
+    align-items: center;
+  }
+  section#features > .list > * {
+    zoom: 85%;
+  }
+  section#features > .list > *:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 2.5rem;
+  }
+}
 section#features > .list > * > img {
   width: auto;
   max-height: 10rem;
@@ -353,9 +409,22 @@ section#code > *:last-child > * {
     float: right;
   }
 }
+@media only screen and (max-width: 750px) {
+  section#code {
+    flex-direction: column;
+  }
+  section#code > *:first-child {
+    margin-bottom: 1.25rem;
+  }
+  section#code * {
+    text-align: center;
+    float: none;
+  }
+}
 
 hr {
   width: 800px;
+  max-width: 90%;
   margin: 0 auto;
   border: none;
   border-top: 1px solid #ddd;
