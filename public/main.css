@@ -9,6 +9,10 @@ body {
   --theme: #c00;
   --theme-dark: #a00;
 }
+::selection {
+  color: #fff;
+  background-color: var(--theme);
+}
 .with-links a {
   color: var(--theme) !important;
   text-decoration: none !important;
@@ -168,10 +172,11 @@ nav .links a {
   display: inline-block;
   color: var(--text);
   position: relative;
-}
-nav .links a {
   opacity: 0.85;
   --border-color: var(--theme);
+}
+nav .links a i {
+  margin-right: 0.25rem;
 }
 nav .links a:hover {
   color: var(--theme);
@@ -192,7 +197,7 @@ nav .links a:hover::before {
 }
 
 nav .links a:not(:last-child) {
-  margin-right: 1.25rem;
+  margin-right: 1.5rem;
 }
 
 section {
@@ -212,7 +217,7 @@ section > h1 {
 }
 
 section#top {
-  height: 25rem;
+  min-height: 27.5rem;
   display: flex;
   align-items: center;
 }
@@ -235,6 +240,11 @@ section#top > .left h1 strong {
 section#top > .right {
   flex: 1 1 40%;
   margin-left: 1rem;
+}
+section#top > .right .more {
+  float: right;
+  transform: translateY(0.5rem);
+  zoom: 90%;
 }
 @media only screen and (max-width: 875px) {
   section#top {
@@ -272,6 +282,7 @@ section#top > .right .image {
   position: relative;
   user-select: none;
   --left-offset: 48%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 section#top > .right .image > p {
   position: absolute;
@@ -279,7 +290,7 @@ section#top > .right .image > p {
   line-height: 1;
   color: #fff;
   font-weight: 600;
-  padding: 0.65rem 0.65rem;
+  padding: 0.5rem 0.65rem;
   background-color: rgba(0, 0, 0, 0.5);
 }
 section#top > .right .image > p.before {
@@ -404,7 +415,13 @@ section#code > *:last-child > * {
   display: block;
   width: 15rem;
 }
-@media only screen and (max-width: 900px) {
+@media only screen and (min-width: 850px) {
+  section#code.padded {
+    padding-left: calc((100% - var(--padded-width)) / 2);
+    padding-right: calc((100% - var(--padded-width)) / 2);
+  }
+}
+@media only screen and (max-width: 1000px) {
   section#code > *:last-child > * {
     float: right;
   }
@@ -434,9 +451,30 @@ section#about p {
   font-size: 1.05rem;
   line-height: 1.5;
   opacity: 0.8;
+  width: 900px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 section#about p:not(:last-child) {
   margin-bottom: 1.25rem;
+}
+
+section#download > h1 {
+  padding-bottom: 0.5rem;
+}
+section#download .meta {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+section#download .meta p {
+  opacity: 0.9;
+}
+section#download .meta a {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2rem;
+  zoom: 80%;
+  width: 14rem;
 }
 
 section#download .instructions {
@@ -448,6 +486,13 @@ section#download .instructions {
 }
 section#download .instructions > div {
   display: flex;
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+@media only screen and (max-width: 900px) {
+  section#download .instructions > div {
+    box-shadow: none;
+  }
 }
 section#download .instructions > div:not(:last-child) {
   margin-bottom: 1.5rem;
@@ -469,4 +514,14 @@ section#download .instructions > div > p {
   margin-top: 0.5rem;
   line-height: 1.5rem;
   opacity: 0.8;
+}
+
+code {
+  padding: 0.2rem 0.5rem;
+  margin: 0 0.2rem;
+  font-size: 100%;
+  white-space: nowrap;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  font-family: monospace;
 }

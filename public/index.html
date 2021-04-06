@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Link Pro – The New UI For BU's Student Link</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="main.css" />
 
     <link rel="shortcut icon" href="icon.png" />
@@ -21,8 +22,8 @@
           <span>Student Link Pro</span>
         </a>
         <div class="links">
-          <a href="#download">Download</a>
-          <a href="#about">About</a>
+          <a href="#download"><i class="fas fa-download"></i> Download</a>
+          <a href="#about"><i class="fas fa-info-circle"></i> About</a>
           <!-- <a href="https://github.com/xtrp/student-link-pro/">Code on GitHub</a> -->
         </div>
       </nav>
@@ -30,22 +31,25 @@
         <section class="padded" id="top">
           <!-- jumbotron -->
           <div class="left">
-            <h1>A redesigned Student Link UI that's <strong>modern</strong>, <strong>clean</strong>, and <strong>easy to use</strong>.</h1>
-            <div class="btns">
-              <a class="btn primary" href="#download"><i class="fas fa-file-download"></i> Download</a>
+            <h1 class="animate__animated animate__fadeIn">
+              A redesigned Student Link UI that's <strong>modern</strong>, <strong>clean</strong>, and <strong>easy to use</strong>.
+            </h1>
+            <div class="btns animate__animated animate__fadeIn">
+              <a class="btn primary" href="#download"><i class="fas fa-download"></i> Download</a>
               <a class="btn" href="#about"><i class="fas fa-info-circle"></i> Learn More</a>
             </div>
           </div>
-          <div class="right">
-            <div class="image">
-              <img src="https://cdn.mos.cms.futurecdn.net/ntFmJUZ8tw3ULD3tkBaAtf.jpg" alt="Left" />
-              <img src="https://cdn.britannica.com/67/19367-050-885866B4/Valley-Taurus-Mountains-Turkey.jpg" alt="Right" />
+          <div class="right with-links">
+            <div class="image animate__animated animate__zoomIn animate__fadeIn">
+              <img src="after.png" alt="Left" />
+              <img src="before.png" alt="Right" />
               <div class="slider">
                 <div class="inner"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-right"></i></div>
               </div>
               <p class="before">Old</p>
               <p class="after">New</p>
             </div>
+            <a href="./gallery/" target="_blank" class="more">See More Screenshots &nbsp;&rarr;</a>
           </div>
         </section>
         <section class="padded" id="features">
@@ -56,24 +60,24 @@
               <img src="icons/navigation.svg" alt="Easier Navigation" />
               <h1>Easier Navigation</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde totam commodi nostrum hic quam consequuntur consequatur possimus sint,
-                tenetur a!
+                Student Link Pro replaces Student Link's existing navigation bar with a new, clean navigation bar that's simpler to use and sticks to
+                the top of the page.
               </p>
             </div>
             <div>
               <img src="icons/homepage.svg" alt="Clean Homepage" />
               <h1>Cleaner Homepage</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde totam commodi nostrum hic quam consequuntur consequatur possimus sint,
-                tenetur a!
+                Student Link Pro redesigns the Student Link homepage to include useful links to all of the relevant Student Link sections, without any
+                additional clutter or unnecessary content.
               </p>
             </div>
             <div>
               <img src="icons/ui.svg" alt="Clearer UI" style="transform: scale(-1, 1)" />
               <h1>Clearer UI</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde totam commodi nostrum hic quam consequuntur consequatur possimus sint,
-                tenetur a!
+                Student Link Pro ramps up the UI of the entire Student Link all-around with its cleaner design, modern typography, and greatly
+                improved layout and color palette.
               </p>
             </div>
           </div>
@@ -81,48 +85,93 @@
         <section class="padded less-vertical-padding" id="download">
           <!-- download -->
           <h1>Download</h1>
-          <div class="instructions">
+          <div class="meta">
+            <p>Student Link Pro is a Chrome Extension. Follow instructions to install.</p>
+            <a class="btn primary" href="StudentLinkPro.zip" download="StudentLinkPro.zip"><i class="fas fa-download"></i> Download (.zip)</a>
+          </div>
+          <div class="instructions with-links">
             <div>
               <div class="number">1</div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam architecto libero explicabo ipsum nobis provident.</p>
+              <p>Click the download button to get the <code>StudentLinkPro.zip</code> file and unzip it in your Downloads folder.</p>
             </div>
             <div>
               <div class="number">2</div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam architecto libero explicabo ipsum nobis provident.</p>
+              <p>Move the unzipped <code>StudentLinkPro</code> folder to a location where you won't move or delete it.</p>
             </div>
             <div>
               <div class="number">3</div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam architecto libero explicabo ipsum nobis provident.</p>
+              <p>
+                Open Google Chrome, go to the top right corner, then click on
+                <strong>Menu ( <i class="fas fa-ellipsis-v"></i> ) &gt; More Tools &gt; Extensions</strong>.
+              </p>
             </div>
             <div>
               <div class="number">4</div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam architecto libero explicabo ipsum nobis provident.</p>
+              <p>Enable <strong>Developer Mode</strong> by clicking on the slider on the top right corner.</p>
             </div>
             <div>
               <div class="number">5</div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam architecto libero explicabo ipsum nobis provident.</p>
+              <p>
+                Go to the top left corner and click the <strong>Load Unpacked</strong> button; then select the <code>StudentLinkPro</code> folder.
+              </p>
+            </div>
+            <div>
+              <div class="number">6</div>
+              <p>
+                Reload <a href="https://www.bu.edu/link/bin/uiscgi_studentlink.pl" target="_blank">Student Link</a>, and the new UI should be enabled!
+              </p>
             </div>
           </div>
         </section>
         <hr />
-        <section class="padded less-vertical-padding" style="padding-top: 2rem" id="about">
+        <section class="padded less-vertical-padding with-links" id="about">
           <!-- about -->
           <h1>About</h1>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio consectetur commodi exercitationem cum eum, atque voluptates
-            voluptatibus, soluta eaque tempora culpa corporis voluptatum sit omnis expedita, cumque tenetur quibusdam accusantium iste quod sed quas
-            eius dolores. Cupiditate unde aliquam, quo nesciunt odio, necessitatibus quos magni, delectus nihil aspernatur laboriosam officia.
+            Student Link Pro is not in any way affiliated with Boston University. All code and software
+            <a href="https://github.com/xtrp/student-link-pro/blob/master/LICENSE" target="_blank">is licensed under the MIT License</a>. Note that
+            some parts of Student Link such as certain announcement banners may be inadvertently removed by this software.
           </p>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio consectetur commodi exercitationem cum eum, atque voluptates
-            voluptatibus, soluta eaque tempora culpa corporis voluptatum sit omnis expedita, cumque tenetur quibusdam accusantium iste quod sed quas
-            eius dolores. Cupiditate unde aliquam, quo nesciunt odio, necessitatibus quos magni, delectus nihil aspernatur laboriosam officia.
+            I had the idea for creating this extension immediately after I used Student Link for the first time. It was clear to me that Student Link
+            had primarily been developed in the early 2000s with a Java backend, before HTML5 and CSS3 had been released. This hypothesis seems to be
+            confirmed by a list of HTML comments at the top of the document, which appears to be a changelog, formatted with the date (mm/dd/yy) at
+            the beginning. The first HTML comment in this supposed changelog has the date: <code>09/06/01</code>. I spent some time working on it in
+            October 2020 before revisiting it in April 2021.
           </p>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio consectetur commodi exercitationem cum eum, atque voluptates
-            voluptatibus, soluta eaque tempora culpa corporis voluptatum sit omnis expedita, cumque tenetur quibusdam accusantium iste quod sed quas
-            eius dolores. Cupiditate unde aliquam, quo nesciunt odio, necessitatibus quos magni, delectus nihil aspernatur laboriosam officia.
+            After developing a preliminary version of this software, I reached out to a representative at BU's Information Services & Technology
+            department, which develops and maintains Student Link, to see if they'd be interested in using it. I was told that they liked the work I
+            had done, although the IS&T department is currently working on a new Student Information System, which will replace Student Link in the
+            near future. I've not received too much further information aside from that, so I believe that releasing this as a Chrome Extension now
+            may be the best way forward with this project.
           </p>
+          <p>
+            In terms of technologies, the Chrome Extension injects
+            <a href="https://github.com/xtrp/student-link-pro/blob/master/extension/addons.js" target="_blank">a single JavaScript file</a> and
+            <a href="https://github.com/xtrp/student-link-pro/blob/master/extension/addons.css" target="_blank">a CSS stylesheet</a> as well. The
+            script is primarily used to reformat the navigation bar and footer, as well as other portions of each page to make the site easier to
+            style with CSS. I used <a href="http://getskeleton.com/" target="_blank">Skeleton CSS</a> to style many of the existing content
+            immediately, and then added custom CSS to redesign the navigation bar, header, footer, and other elements. Correctly selecting elements
+            presents an interesting problem since Student Link, to the best of my knowledge, does not use any classes or selectable IDs at all. My
+            solution for this was to select elements based on their content with JavaScript, and then apply unique classes to those selected elements.
+            The UI updates are not mobile responsive, simply because Chrome Extensions like this one are not typically installed on mobile devices. If
+            you have any questions about the technical aspects of this project, feel free to take a look at the code.
+          </p>
+          <p>
+            Whilst this has not been my first time developing a Chrome Extension, it has been the first in which the program entirely redesigns an
+            existing site. Of course, this can present many difficulties, particularly the possibility of the site being changed by the maintainers
+            and code no longer working. However, since I believe a new Student Information System is coming soon, this extension will likely have a
+            very short lifespan which should allow many of these potential problems to be avoided. Overall, this was interesting to work on,
+            particularly in terms of identifying clever ways to work with the existing system and make improvements. Note that I chose not to publish
+            this on the Chrome web store simply because of a lack of funds.
+          </p>
+          <p>
+            I hope you like this small piece of software and find it useful for using Student Link in a more simple manner. If you have any questions
+            or would like to reach out, contact me at <a href="mailto:gabriel@gabrielromualdo.com">gabriel@gabrielromualdo.com</a> &mdash; I typically
+            respond within one business day.
+          </p>
+          <p><em>&mdash; Gabriel Romualdo, April 2021</em></p>
         </section>
         <section class="padded" id="code">
           <!-- code -->
