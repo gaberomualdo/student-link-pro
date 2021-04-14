@@ -21,7 +21,12 @@
     "48": "icon-48.png",
     "128": "icon-128.png"
   },
-  "permissions": ["<all_urls>"],
+  "permissions": [
+    "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*"
+  ],
   "content_scripts": [
     {
       "matches": [
