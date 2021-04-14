@@ -1,15 +1,27 @@
 {
   "manifest_version": 2,
 
-  "name": "BU Student Link Pro",
-  "description": "Major updates to Student Link to match modern 2020 UI instead of 2003 UI.",
+  "name": "Student Link Pro",
+  "short_name": "Student Link Pro",
+  "description": "A clean redesign for BU's Student Link.",
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_title": "Major updates to Student Link to match modern 2020 UI instead of 2003 UI."
+    "default_title": "Student Link is redesigned!",
+    "default_icon": {
+      "16": "icon-16.png",
+      "32": "icon-32.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
   },
-  "permissions": ["activeTab", "tabs", "<all_urls>"],
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "permissions": ["<all_urls>"],
   "content_scripts": [
     {
       "matches": [
