@@ -20,6 +20,12 @@ Implement major improvements to BU's Student Link web app to use modern styles a
   - For the screenshot gallery, I used one of HTML5UP's templates.
   - Some of the icons on the gallery are from unDraw.
 
+## Other Information
+
+The main JS function that initializes the site in the extension is called `gabrielEntersTheChat`.
+
+I recently ported the comparison slider image on the site to a React component published as a package on NPM: [github.com/xtrp/ImageComparisonSlider](https://github.com/xtrp/ImageComparisonSlider).
+
 ## License
 
 See `LICENSE`.
