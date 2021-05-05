@@ -1,0 +1,48 @@
+{
+  "manifest_version": 2,
+
+  "name": "Student Link Pro",
+  "short_name": "Student Link Pro",
+  "description": "A clean redesign for BU's Student Link.",
+  "version": "1.0",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "xtrp@studentlinkpro.web.app",
+      "strict_min_version": "42.0"
+    }
+  },
+  "browser_action": {
+    "default_title": "Student Link is redesigned!",
+    "default_icon": {
+      "16": "icon-16.png",
+      "32": "icon-32.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "permissions": [
+    "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+    "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "https://bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "http://www.bu.edu/link/bin/uiscgi_studentlink.pl/*",
+        "https://www.bu.edu/link/bin/uiscgi_studentlink.pl/*"
+      ],
+      "js": ["addons.js"],
+      "css": ["addons.css"]
+    }
+  ]
+}
